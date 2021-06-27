@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from random import randint
 from . import database
-from .models import PageView
+from .models import *
 
 # Create your views here.
 
@@ -35,7 +35,7 @@ def reg(request):
         user.save()
         return render(request, 'login.html')
     else:
-        return render(request, 'reg.html')
+        return render(request, 'reg.html',{'creds1':creds})
 
 def login(request):
     return render(request, 'login.html')
