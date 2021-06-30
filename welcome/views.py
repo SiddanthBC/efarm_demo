@@ -43,25 +43,25 @@ def login(request):
     return render(request, 'login.html')
 
 def iot(request):
-    # temp = randint(20,35)
-    # humidity = randint(25,100)
-    # soil_moisture = randint(25,100)
+    temp = randint(20,35)
+    humidity = randint(25,100)
+    soil_moisture = randint(25,100)
 
-    # sdata = {
-    #     'temp':temp,
-    #     'humidity':humidity,
-    #     'soil_moisture':soil_moisture,
+    sdata = {
+        'temp':temp,
+        'humidity':humidity,
+        'soil_moisture':soil_moisture,
     
-    # }
+    }
     # print(sdata)
-    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        s.connect(('192.168.162.73', 65432))
-        data = s.recv(1024)
-    sdata = json.loads(data)
-    print('<-'*10,'Data Received','->'*10,'\n')
-    print('Humidity: ',sdata['humidity'],'\n')
-    print('Temparature: ',sdata['temp'],'\n')    
-    print('Moisture: ',sdata['moisture'],'\n')
+    # with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+    #     s.connect(('192.168.162.73', 65432))
+    #     data = s.recv(1024)
+    # sdata = json.loads(data)
+    # print('<-'*10,'Data Received','->'*10,'\n')
+    # print('Humidity: ',sdata['humidity'],'\n')
+    # print('Temparature: ',sdata['temp'],'\n')    
+    # print('Moisture: ',sdata['moisture'],'\n')
     return render(request, 'iot.html', sdata)
 
 
