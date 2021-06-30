@@ -27,17 +27,18 @@ def health(request):
     return HttpResponse(PageView.objects.count())
 
 def reg(request):
-    if request.method == 'POST':
+    if request.method == "POST":
         username = request.POST['Username']
         email = request.POST['email']
         password1 = request.POST['password1']
         password2 = request.POST['password2']
-    
+
         user =  creds(name=username, password=password1, email=email)
         user.save()
+        print(username,email,password1)
         return render(request, 'login.html')
     else:
-        return render(request, 'reg.html',{'creds1':creds})
+        return render(request, 'reg.html')
 
 def login(request):
     return render(request, 'login.html')
