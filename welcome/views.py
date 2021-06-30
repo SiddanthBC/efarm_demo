@@ -33,7 +33,7 @@ def reg(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
     
-        user =  User.objects.create(username=username, password=password1, email=email)
+        user =  creds(name=username, password=password1, email=email)
         user.save()
         return render(request, 'login.html')
     else:
