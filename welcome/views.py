@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from random import randint
 from . import database
-from .models import *
+from welcome.models import creds,PageView
 import json
 import socket
 
@@ -33,9 +33,9 @@ def reg(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
 
-        user =  creds(name=username, password=password1, email=email)
+        user =  creds.objects.create(name=username, password=password1, email=email)
         user.save()
-        print(username,email,password1)
+        print(user.name,user.email,user.password)
         return render(request, 'login.html')
     else:
         return render(request, 'reg.html')
