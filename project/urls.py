@@ -11,7 +11,7 @@ urlpatterns = [
 
     # url(r'^$', index),
     # url(r'^health$', health),
-    url(r'^$',reg),
+    url(r'^$',reg,name='reg'),
     url(r'^admin/', admin.site.urls),
     url(r'^iot/',iot),
     url(r'^login/',login),

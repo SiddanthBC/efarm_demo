@@ -1,4 +1,7 @@
 <head>
+    <title>
+      IoT Dash-board
+    </title>
     <style>
         
   .button {
@@ -8,27 +11,50 @@
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
   }
+
+  .container {
+    height: 20px;
+    position: relative;
+  }
+  .center{
+    position: absolute;
+    top: 10px;
+    left: 725px;
+    
+    
+  }
     </style>
 </head>
 
-{% extends 'base.html' %}
+<body>
+  <h1 style="color:rgb(55, 75, 255); text-align: center;" > Sensor Readings: </h1>
 
-{% block content %}
-<h1> Sensor readings </h1>
+  <ul style="text-align: center; font-size:30px;" id="demo1"></ul>
+  <ul style="text-align: center; font-size:30px;" id="demo2"></ul>
+  <ul style="text-align: center; font-size:30px;" id="demo3"></ul>
 
-<ul id="demo1"></ul>
-<ul id="demo2"></ul>
-<ul id="demo3"></ul>
+    <div style="text-align: center; margin: auto;">
+      <form action="/iot/" >
+        <button  class="button" onclick="fetchData()"> Refresh </button>
+      </form>
+      <input class="button" value="Surveillance Camera" onclick= "window.open('http://proxy60.rt3.io:32733/index.html')" />
+    </div>
+    
+  <!-- <div>
+    <button onclick="myFunction()">Surveillance Camera</button>
 
-<form action="/iot/" >
-<button class="button" onclick="fetchData()"> Refresh </button>
-</form>
+    <script>
+      function myFunction() {
+      location.replace("http://192.168.29.5:8000/index.html")
+      }
+    </script>
+  </div> -->
 
+</body>
 <script type="text/javascript">
     function fetchData() {
         var x = JSON.parse('{{temp}}');
@@ -44,6 +70,4 @@
 </script>
 
 
-
-{% endblock %}
 

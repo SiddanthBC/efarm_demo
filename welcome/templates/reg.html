@@ -16,6 +16,11 @@
     <h1>Welcome to e-Farming</h1>
 	<div class="main-w3layouts wrapper">
 		<h3>SignUp</h3>
+		<div>
+			{% for message in messages %}
+			<p style="color:rgb(255, 55, 55); font-size:35px; text-align: center;">{{ message }}</p> 
+			{% endfor %}
+		</div>
 		<div class="main-agileinfo">
 			<div class="agileits-top">
 				<form action="" method="POST">
@@ -28,6 +33,7 @@
 				</form>
 				<p>Already have an Account? <a href="login/"> Login Now!</a></p>
 			</div>
+			
 		</div>
 		
 		<ul class="colorlib-bubbles">
