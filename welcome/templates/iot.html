@@ -38,7 +38,7 @@
   <ul style="text-align: center; font-size:30px;" id="demo3"></ul>
 
     <div style="text-align: center; margin: auto;">
-      <form action="/iot/" >
+      <form action="/iot/" method="POST">{% csrf_token %}
         <button  class="button" onclick="fetchData()"> Refresh </button>
       </form>
       <input class="button" value="Surveillance Camera" onclick= "window.open('http://proxy60.rt3.io:32733/index.html')" />
@@ -59,8 +59,13 @@
     function fetchData() {
         var x = JSON.parse('{{temp}}');
         var y = JSON.parse('{{humidity}}');
-        var z = JSON.parse('{{soil_moisture}}');
+        let z = JSON.parse('{{soil_moisture}}');
         console.log(x,y,z);
+        if (z) {
+          z="Good condition";
+        } else {
+          z = " watering needed"
+        }
         document.getElementById("demo1").innerHTML = "Temp = "+x;
         document.getElementById("demo2").innerHTML = "Humidity = "+y;
         document.getElementById("demo3").innerHTML = "Soil Moisture = "+z;

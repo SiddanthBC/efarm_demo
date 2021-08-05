@@ -71,9 +71,9 @@ def iot(request):
     # }
     # print(sdata)
     with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-        host_ip = socket.gethostbyname('proxy60.rt3.io')
-        #s.connect(('192.168.29.5', 8080)) #R-pi IP and port connection
-        s.connect((host_ip,32741))
+        #host_ip = socket.gethostbyname('proxy61.rt3.io')
+        s.connect(('192.168.29.5', 8080)) #R-pi IP and port connection
+        #s.connect((host_ip,33471))
         data = s.recv(1024)
     sdata = json.loads(data)
     print('-'*10,'Data Received','-'*10,'\n')
